@@ -1,0 +1,5 @@
+Django==1.6.2
+Whoosh==2.6.0
+django-haystack==2.1.0
+pygeocoder==1.2.2
+simplejson==3.3.3
