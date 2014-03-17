@@ -1,25 +1,40 @@
 html, body {
     height: 100%;
     width: 100%;
+    margin: 0px;
 }
 
-#results {
-    height: 605px;
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #333333;
+    line-height: 1.25;
+    font-size: 14px;
+}
+
+.col-left {
+    width: 24%;
+    height: 100%;
+    float: left;
     overflow: scroll;
+    padding-left: 1%;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+
+.col-right {
+    width: 75%;
+    height: 100%;
+    float: right;
 }
 
 #map-canvas {
-    height: 700px;
-}
-
-.container {
-    padding: 0px;
-}
-
-.col-md-3 {
-    padding: 0px;
-}
-
-.col-md-9 {
-    padding: 0px;
+    height: 100%;
 }

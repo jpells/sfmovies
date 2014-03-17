@@ -8,12 +8,9 @@
         <meta name="description" content="SF Movie Locations">
         <meta name="author" content="James Pells">
         <title>SF Movie Locations</title>
-        <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <link rel="stylesheet" type="text/css" href="{% static "films/css/main.css" %}">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&sensor=false"></script>
-        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="{% static "films/js/main.js" %}"></script>
         <script type="text/javascript">
             $(document).ready(function() {
@@ -26,19 +23,15 @@
         </script>
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <h4>SF Movie Locations</h4>
-                    <p>Search for a specific movie's location below.</p>
-                    <form class="search">
-                        <input type="text" name="query" placeholder="Search"><input type="reset" value="Reset!">
-                    </form>
-                </div>
-                <div class="col-md-9">
-                    <div id="map-canvas"></div>
-                </div>
-            </div>
+        <div class="col-left">
+            <h4>SF Movie Locations</h4>
+            <p>Search for a specific movie's location below.</p>
+            <form class="search">
+                <input type="text" name="query" placeholder="Search"><input type="reset" value="Reset!">
+            </form>
+        </div>
+        <div class="col-right">
+            <div id="map-canvas"></div>
         </div>
     </body>
 </html>
