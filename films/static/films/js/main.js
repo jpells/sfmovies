@@ -87,14 +87,14 @@ Search.prototype.fetch = function(query) {
 Search.prototype.show_results = function() {
     var self = this
     //Remove any existing results.
-    $('.results').remove()
+    $('#results').remove()
     for (var marker_offset in self.markers) {
         self.markers[marker_offset].setMap(null)
     }
     //Add results and markers
     self.markers = []
     var results = self.data.results || []
-    var results_wrapper = $('<div class="results"></div>')
+    var results_wrapper = $('<div id="results"></div>')
     var base_elem = $('<div><a href="#" class="result"></a></div>')
     if (results.length > 0) {
         for (var res_offset in results) {

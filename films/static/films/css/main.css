@@ -3,6 +3,23 @@ html, body {
     width: 100%;
 }
 
+#results {
+    height: 605px;
+    overflow: scroll;
+}
+
 #map-canvas {
     height: 700px;
+}
+
+.container {
+    padding: 0px;
+}
+
+.col-md-3 {
+    padding: 0px;
+}
+
+.col-md-9 {
+    padding: 0px;
 }
