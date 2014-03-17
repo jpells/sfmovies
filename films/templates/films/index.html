@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="SF Movie Locations">
+        <meta name="author" content="James Pells">
+        <title>SF Movie Locations</title>
+        <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static "films/css/main.css" %}">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}&sensor=false"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{% static "films/js/main.js" %}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                window.search = new Search({
+                    form_selector: '.search',
+                    url: '{% url 'films' %}',
+                })
+                window.search.setup()
+            })
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>SF Movie Locations</h4>
+                    <p>Search for a specific movie's location below.</p>
+                    <form class="search">
+                        <input type="text" name="query" placeholder="Search"><input type="reset" value="Reset!">
+                    </form>
+                </div>
+                <div class="col-md-9">
+                    <div id="map-canvas"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
