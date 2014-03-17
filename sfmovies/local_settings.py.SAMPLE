@@ -1,0 +1,4 @@
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '&ysvssr_gy4*xw@4tmlcrf4&jlv-)%albje20=l+#$6ff*26pm'
+
+GOOGLE_MAPS_API_KEY = "BJabTzBGAY53oQxjXL-hT4umSnaN-oUDMiv8BOZ"
