@@ -33,11 +33,10 @@ class Command(BaseCommand):
         filmlocation_skipped_counter = 0
         filmlocation_reused_counter = 0
         for film_row in film_data:
-            logger.info('Importing Film: '+film_row['title'])
+            logger.info("Importing Film: %s" % film_row['title'])
             if film_row.get('locations'):
                 #Normalize data by stripping whitespace from beginning and end of column values
-                for column in film_row:
-                    film_row[column] = film_row[column].lstrip().rstrip()
+                film_row = {key:value.lstrip().rstrip() for key, value in film_row.iteritems()}
                 try:
                     #Check if film already exists
                     film = Film.objects.get(title=film_row['title'])
@@ -47,7 +46,7 @@ class Command(BaseCommand):
                     film = Film(title=film_row['title'], release_year=film_row['release_year'], fun_facts=film_row.get('fun_facts', None), production_company=film_row['production_company'], distributor=film_row.get('distributor', None), director=film_row['director'], writer=film_row.get('writer', None), actors=", ".join(actor for actor in actors if actor != ""))
                     film.save()
                     film_counter += 1
-                logger.info('Importing Film Location: '+film_row['locations'])
+                logger.info("Importing Film Location: %s" % film_row['locations'])
                 #Check if film location already exists
                 film_locations = film.locations.filter(address=film_row['locations'])
                 if not film_locations:
@@ -58,14 +57,14 @@ class Command(BaseCommand):
                             film.locations.create(address=film_row['locations'])
                             filmlocation_counter += 1
                         except GeocoderError:
-                            logger.warning('Cannot find coordinates for: '+film_row['locations'])
+                            logger.warning("Cannot find coordinates for: %s" % film_row['locations'])
                             filmlocation_skipped_counter += 1
                     else:
                         film.locations.add(film_locations[0])
                         filmlocation_reused_counter += 1
             else:
                 filmlocation_skipped_counter += 1
-        self.stdout.write('Imported '+str(film_counter)+' film(s)')
-        self.stdout.write('Imported '+str(filmlocation_counter)+' film location(s)')
-        self.stdout.write('Skipped '+str(filmlocation_skipped_counter)+' film location(s)')
-        self.stdout.write('Reused '+str(filmlocation_reused_counter)+' film location(s)')
+        self.stdout.write("Imported %d film(s)" % film_counter)
+        self.stdout.write("Imported %d film location(s)" % filmlocation_counter)
+        self.stdout.write("Skipped %d film location(s)" % filmlocation_skipped_counter)
+        self.stdout.write("Reused %d film location(s)" % filmlocation_reused_counter)
